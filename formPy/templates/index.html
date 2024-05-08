@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORMULARIO</title>
+  <meta http-equiv="content-type" content="text/html" ; charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    @media print {
+      @page {
+        size: A4; /* Tamanho de página A4 */
+        margin: 0; /* margens de 3mm */
+      }
+    }
+
+    form {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      text-transform: uppercase;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    .tabelaFormulario td {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .tabela-celula {
+      max-width: 200px; /* Defina o tamanho máximo que deseja para as células */
+      overflow: hidden; /* Define o comportamento de overflow do conteúdo */
+      text-overflow: ellipsis; /* Adiciona reticências (...) ao texto que não couber */
+      white-space: nowrap; /* Impede que o texto seja quebrado em várias linhas */
+    }
+
+    .divTable {
+      width: 100%;
+      height: 100%; /* Adicione esta linha para garantir que a div ocupe toda a altura disponível */
+      overflow: auto; /* Adicione esta linha para permitir que a div role se o conteúdo for maior que a altura da div */
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .butao {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    .botaoPdf {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .butao:hover {
+      background-color: #45a049;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .fixed-size-table {
+      width: 100%;
+    }
+
+    .fixed-size-table td {
+      width: 10%;
+      padding: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" action="" id="formulario">
+    <table border="2" id="tabelaFormulario" class="tabelaFormulario">
+      <thead>
+        <tr>
+          <th colspan="2">FICHA DE ACOMPANHAMENTO DE PROCESSO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cliente/Projeto:</td>
+          <td><input id="cliente" name="cliente" type="text" required /></td>
+        </tr>
+        <tr>
+          <td>Vendedor:</td>
+          <td><input id="vendedor" name="vendedor" type="text" required /></td>
+        </tr>
+        <tr>
+          <td>N. Pedido:</td>
+          <td><input id="pedido" name="pedido" type="text" required /></td>
+        </tr>
+        <tr>
+          <td>Data Entrada: </td>
+          <td><input id="dataentrada" name="dataentrada" type="date" required /></td>
+        </tr>
+        <tr>
+          <td>Qtd Planos:</td>
+          <td><input id="qtdplano" name="qtdplano" type="text" required /></td>
+        </tr>
+        <tr>
+          <td> Cortes: </td>
+          <td><input id="cortes" name="cortes" type="number" required value="{{corte}}"/></td>
+        </tr>
+        <tr>
+          <td> Engrosso: </td>
+          <td><input id="engrosso" name="engrosso" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> Fitagem: </td>
+          <td><input id="fitagem" name="fitagem" type="number" required value="{{fitagem}}" /></td>
+        </tr>
+        <tr>
+          <td> Esp. Engrosso: </td>
+          <td><input id="espengrosso" name="espengrosso" type="number" required value="{{engrosso}}" /></td>
+        </tr>
+        <tr>
+          <td> Furo Dob: </td>
+          <td><input id="furodob" name="furodob" type="text" required value="{{furo_dob}}" /></td>
+        </tr>
+        <tr>
+          <td> Usin. 45: </td>
+          <td><input id="usinagem" name="usinagem" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> Furo sist: </td>
+          <td><input id="furosist" name="furosist" type="text" required value="{{furosist}}" /></td>
+        </tr>
+        <tr>
+          <td> Router: </td>
+          <td><input id="router" name="router" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> Canal: <br>
+          <td><input id="canal" name="canal" type="text" required value="{{canal}}" /> </td>
+          </td>
+        </tr>
+        <tr>
+          <td>Tipo de canal:</td>
+          <td><input id="tipocanal" name="tipocanal" type="text" required /></td>
+        </tr>
+        <tr>
+          <td> Router+Fita: </td>
+          <td><input id="routerfita" name="routerfita" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> TT peças do pedido: </td>
+          <td><input id="ttpecas" name="ttpecas" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> Corte Perf: </td>
+          <td><input id="corteperfil" name="corteperfil" type="number" required /></td>
+        </tr>
+        <tr>
+          <td> Material da central: </td>
+          <td>
+            <select id="materialCentral" required>
+              <option value="Sim"> Sim
+              <option value="Não"> Não
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Uso de Sobras:
+          </td>
+          <td>
+            <select id="usoSobra" required>
+              <option value="Sim"> Sim
+              <option value="Não"> Não
+            </select>
+          </td>
+        </tr>
+        <td colspan="2">
+          <center> <b> FICHA DE ACEITE</b></center>
+        </td>
+        <tr>
+          <td>
+            Entregar?
+          </td>
+          <td>
+            <select id="entregar" required>
+              <option value="Sim"> Sim
+              <option value="Não"> Não
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td> Previsao para retira: </td>
+          <td><input id="previsao" name="previsao" type="date" required /></td>
+        </tr>
+        <tr>
+          <td>
+            Endereço:
+          </td>
+          <td><input id="endereco" name="endereco" type="text" required /></td>
+        </tr>
+        <tr>
+          <td>
+            Prédio/sobrado:
+          </td>
+          <td>
+            <select id="predio" required>
+              <option value="Sim"> Sim
+              <option value="Não"> Não
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>(se possuir escadas) Andares:</td>
+          <td><input id="andares" name="andares" type="number" required /></td>
+        </tr>
+        <tr>
+          <td>
+            Escada:
+          </td>
+          <td>
+            <select id="escada" required>
+              <option value="Sim"> Sim
+              <option value="Não"> Não
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="file" class="botaoPdf" id="fileInput" accept=".pdf" />
+<button type="button" class="botaoPdf" onclick="processarPDF()">Processar PDF(Promob)</button>
+    <input id="botaoEnviar" type="button" value="Enviar" onclick="enviar()" class="butao" />
+  </form>
+    <div class="divTable" id="visuTable" style="display: none; width: 80%;">
+      <table id="tabelaVisualizacao" class="fixed-size-table" border="2">
+        <!-- Primeira linha -->
+        <tr>
+          <th colspan="2">FICHA DE ACOMPANHAMENTO DE PROCESSO</th>
+        </tr>
+        <!-- Segunda linha -->
+        <tr>
+          <td style="tabela-celula">CLIENTE/OBRA: <b><span id="inputCliente"></span></b></td>
+          <td style="tabela-celula">VENDEDOR/PEDIDO: <b><span id="inputVendedor"></span> - <span id="pedidoDisplay"></span></b></td>
+        </tr>
+        <!-- Terceira linha -->
+        <tr>
+          <td style="tabela-celula">QTDD PLANOS: <b><span id="qtdplanoDisplay"></span></b></td>
+          <td style="tabela-celula">DATA ENTRADA: <b><span id="dataentradaDisplay"></span></b></td>
+        </tr>
+        <!-- Quarta linha -->
+        <tr>
+          <td style="tabela-celula">CORTES (qtd): <b><span id="cortesDisplay"></span></b></td>
+          <td style="tabela-celula">ENGROSSO (Peças): <b><span id="engrossoDisplay"></span></b></td>
+        </tr>
+        <!-- Quinta linha -->
+        <tr>
+          <td style="tabela-celula"> FITAGEM (Metros): <b><span id="fitagemDisplay"></span></b></td>
+          <td style="tabela-celula"> ESP. ENGR. (mm) <b><span id="espengrossoDisplay"></span></b></td>
+        </tr>
+        <!-- Sexta linha -->
+        <tr>
+          <td style="tabela-celula"> FURO DOB: (Unid) <b><span id="furodobDisplay"></span></b></td>
+          <td style="tabela-celula"> USIN 45 (Peças) <b><span id="usinagemDisplay"></span></b></td>
+        </tr>
+        <!-- Sétima linha -->
+        <tr>
+          <td style="tabela-celula"> FURO SIST (Peças) <b><span id="furosistDisplay"></span></b></td>
+          <td style="tabela-celula">ROUTER: <b><span id="routerDisplay"></span></b></td>
+        </tr>
+        <!-- Oitava linha -->
+        <tr>
+          <td style="tabela-celula"> CANAL:  <b><span id="canalDisplay"></span></b></td>
+          <td style="tabela-celula">ROUT+FITA (Peças) <b><span id="routerFitaDisplay"></span></b></td>
+        </tr>
+        <!-- Nona linha -->
+        <tr>
+          <td>TIPO DE CANAL<b><span id="tipoCanalDisplay"></span></b></td>
+          <td>TT PEÇAS DO PEDIDO <b><span id="ttpecasDisplay"></span></b></td>
+        </tr>
+        <!-- Décima linha -->
+        <tr>
+          <td>CORTE PERF. (Qtdd) <b><span id="cortePerfilDisplay"></span> </b> </td>
+          <td colspan="1">Previsão para retirada em: <b><span id="previsaoDisplay"></span></b></td>
+        </tr>
+        <!-- Décima segunda linha -->
+        <tr>
+          <td colspan="2">MATERIAL DA CENTRAL: <b><span id="materialCentralDisplay"></span></b></td>
+        </tr>
+        <!-- Décima terceira linha -->
+        <tr>
+          <td colspan="2">USO DE SOBRAS: <b><span id="usoSobraDisplay"></span></b></td>
+        </tr>
+        <!-- Décima quarta linha -->
+        <tr>
+          <th colspan="2">FICHA DE ACEITE</th>
+        </tr>
+        <!-- Décima quinta linha -->
+        <tr>
+          <td colspan="1">ENTREGAR? <b><span id="entregarDisplay"></span></b></td>
+          <td colspan="1">PREVISÃO PARA RETIRADA: <b><span id="previsaoDisplay2"></span></b></td>
+        </tr>
+        <!-- Décima sexta linha -->
+        <tr>
+          <td colspan="2">ENDEREÇO: <b><p id="enderecoDisplay"></p></b></td>
+        </tr>
+        <!-- Décima sétima linha -->
+        <tr>
+          <td colspan="1">PRÉDIO/SOBRADO <b><span id="predioDisplay"></span></b></td>
+          <td colspan="1">ESCADA <b><span id="escadaDisplay"></span></b> ANDARES <b><span id="andaresDisplay"></span></b></td>
+        </tr>
+        <!-- Décima oitava linha -->
+        <tr>
+          <td colspan="2">Entregas em prédios só serão feitas com peças que caibam no elevador de serviço. Peças maiores serão deixadas no andar da descarga. Havendo necessidade de subir escadas será cobrado VALOR ADICIONAL de no mínimo R$ 100,00 ou R$30,00/por andar. (O que for maior) A não informação do uso de escadas no ato da venda, implicará no retorno da mercadoria para a Giacomo. <br> <br> <b>Assinatura:________________</b> </td>
+        </tr>
+        <!-- Décima nona linha -->
+        <tr>
+          <td colspan="2">1-Todas as sobras serão retiradas ou entregues com o plano de corte. As sobras que não forem entregues por solicitação do cliente ficarão disponíveis na Giacomo no prazo máximo de 3 dias. Após este prazo as peças serão descartadas. Não aceitamos reclamações posteriores. <br> 2- Projetos enviados pelo "Corte Cloud/Promob" NÃO podem ser alterados pela Giacomo. Os planos enviados são de total responsabilidade do cliente. Favor conferir antes de liberar para corte. <br> <br> <b> De acordo em/Data:____/____/_____ </b> <br> <br> <b>Nome:_______________ </b></td>
+        </tr>
+        <!-- Vigésima linha -->
+        <tr>
+          <td colspan="2"><center>RECIBO DE ENTREGA / <b><span id="pedidoDisplay2"/> </b></center></td>
+        </tr>
+        <!-- Vigésima primeira linha -->
+        <tr>
+          <td colspan="2">Material entregue em:____________________ Data:____/____/_____ </td>
+        </tr>
+        <!-- Vigésima segunda linha -->
+        <tr>
+          <td colspan="2">Declaro ter recebido e conferido todas as peças e serviços acima relacionados, dando por encerrado o processo. <br> <br> Data:____/____/_____ <br> <br> Nome:_______________</td>
+        </tr>
+        <!-- Vigésima terceira linha -->
+        <tr>
+          <td colspan="2"><center>PROTOCOLO DE ENTREGA DO PROCESSO / <b><span style="align-items: right;" id="pedidoDisplay3"/></b></center></td>
+        </tr>
+        <!-- Vigésima quarta linha -->
+        <tr>
+          <td colspan="2">SOLICITAÇÃO DE PRODUÇÃO, ENTREGUE EM:_______________ RECEBIDO POR:_______________ VISTO:_______________</td>
+        </tr>
+      </table>
+      <input id="botaoVoltar" type="button" value="Voltar" style="display: none;" onclick="voltar()" class="butao" />
+      <input id="botaoImprimir" type="button" value="Imprimir" style="display: none;" onclick="imprimir()" class="butao" />
+    </div>
+  </center>
+</body>
+<script>
+
+  function enviar() {
+
+    const inputCliente = document.getElementById('cliente').value;
+    const inputVendedor = document.getElementById('vendedor').value;
+    const qtdplano = document.getElementById('qtdplano').value;
+    const dataentrada = document.getElementById('dataentrada').value;
+    const cortes = document.getElementById('cortes').value;
+    const engrosso = document.getElementById('engrosso').value;
+    const fitagem = document.getElementById('fitagem').value;
+    const espengrosso = document.getElementById('espengrosso').value;
+    const furodob = document.getElementById('furodob').value;
+    const usinagem = document.getElementById('usinagem').value;
+    const furosist = document.getElementById('furosist').value;
+    const router = document.getElementById('router').value;
+    const ttpecas = document.getElementById('ttpecas').value;
+    const canal = document.getElementById('canal').value;
+    const andares = document.getElementById('andares').value;
+    const tipocanal = document.getElementById('tipocanal').value;
+    const routerfita = document.getElementById('routerfita').value;
+    const corteperfil = document.getElementById('corteperfil').value;
+    const previsao = document.getElementById('previsao').value;
+    const pedido = document.getElementById('pedido').value;
+    const materialCentral = document.getElementById('materialCentral');
+    const selectedMaterial = materialCentral.value;
+    const usoSobra = document.getElementById('usoSobra');
+    const selectedUsoSobra = usoSobra.value;
+    const entregar = document.getElementById('entregar');
+    const selectedEntregar = entregar.value;
+    const endereco = document.getElementById('endereco').value;
+    const predio = document.getElementById('predio');
+    const selectedPredio = predio.value;
+    const escada = document.getElementById('escada');
+    const selectedEscada = escada.value;
+    
+    document.getElementById('inputCliente').textContent = inputCliente;
+    document.getElementById('inputVendedor').textContent = inputVendedor;
+    document.getElementById('qtdplanoDisplay').textContent = qtdplano;
+    document.getElementById('dataentradaDisplay').textContent = formatarData(dataentrada);
+    document.getElementById('cortesDisplay').textContent = cortes;
+    document.getElementById('ttpecasDisplay').textContent = ttpecas;
+    document.getElementById('engrossoDisplay').textContent = engrosso;
+    document.getElementById('espengrossoDisplay').textContent = espengrosso;
+    document.getElementById('furodobDisplay').textContent = furodob;
+    document.getElementById('usinagemDisplay').textContent = usinagem;
+    document.getElementById('furosistDisplay').textContent = furosist;
+    document.getElementById('routerDisplay').textContent = router
+    document.getElementById('canalDisplay').textContent = canal;
+    document.getElementById('andaresDisplay').textContent = andares;
+    document.getElementById('pedidoDisplay').textContent = pedido;
+    document.getElementById('pedidoDisplay2').textContent = pedido;
+    document.getElementById('pedidoDisplay3').textContent = pedido;
+    document.getElementById('routerFitaDisplay').textContent = routerfita;
+    document.getElementById('tipoCanalDisplay').textContent = tipocanal;
+    document.getElementById('entregarDisplay').textContent = selectedEntregar;
+    document.getElementById('previsaoDisplay').textContent = formatarData(previsao);
+    document.getElementById('previsaoDisplay2').textContent = formatarData(previsao);
+    document.getElementById('enderecoDisplay').textContent = endereco;
+    document.getElementById('predioDisplay').textContent = selectedPredio;
+    document.getElementById('escadaDisplay').textContent = selectedEscada;
+    document.getElementById('cortePerfilDisplay').textContent = corteperfil;
+    document.getElementById('materialCentralDisplay').textContent = selectedMaterial;
+    document.getElementById('usoSobraDisplay').textContent = selectedUsoSobra;
+    document.getElementById('fitagemDisplay').textContent = fitagem;
+    
+    
+    if (!verificarCamposObrigatoriosPreenchidos()) {
+      alert('Por favor, preencha todos os campos obrigatórios antes de prosseguir.');
+      return;
+  }
+
+    document.getElementById('formulario').style.display = 'none';
+    document.getElementById('visuTable').style.display= 'block';
+    document.getElementById('tabelaVisualizacao').style.display = 'block';
+    document.getElementById('botaoVoltar').style.display = 'block';
+    document.getElementById('botaoImprimir').style.display = 'block';
+    document.getElementById('botaoEnviar').style.display = 'none'; 
+  }   
+
+  function voltar() {
+    document.getElementById('tabelaVisualizacao').style.display = 'none';
+    document.getElementById('formulario').style.display = 'block';
+    document.getElementById('botaoEnviar').style.display = 'block';
+    document.getElementById('botaoVoltar').style.display = 'none';
+    document.getElementById('visuTable').style.display= 'none';
+  }
+
+  function imprimir() {
+    var tabelaParaImprimir = document.getElementById('tabelaVisualizacao');
+
+    var estiloImpressao = '<style>';
+    estiloImpressao += 'table { width: 100%; border-collapse: collapse; }';
+    estiloImpressao += 'th, td { padding: 2px; border: 1px solid #000; }';
+    estiloImpressao += '</style>';
+
+    var janelaImpressao = window.open('', '_blank');
+
+    janelaImpressao.document.write('<html><head><title>Impressão da Tabela</title>');
+    janelaImpressao.document.write(estiloImpressao);
+    janelaImpressao.document.write('</head><body>');
+
+    janelaImpressao.document.write(tabelaParaImprimir.outerHTML);
+
+    janelaImpressao.document.write('</body></html>');
+
+    janelaImpressao.print();
+
+    janelaImpressao.close();
+  }
+
+  function processarPDF() {
+    try {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('pdfFile', file);
+
+        fetch('/processar_pdf', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            const valores = JSON.parse(data);
+            document.getElementById('cortes').innerText = valores.corte;
+            document.getElementById('furodob').innerText = valores.furo_dob;
+            document.getElementById('canal').innerText = valores.canal;
+            document.getElementById('fitagem').innerText = valores.fitagem;
+            document.getElementById('furosist').innerText = valores.furos_cnc;
+
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Erro ao enviar o PDF para o servidor:', error);
+        });
+    } catch (error) {
+        console.error('Erro no JavaScript:', error);
+    }
+}
+
+function verificarCamposObrigatoriosPreenchidos() {
+  const camposObrigatorios = document.querySelectorAll('[required]');
+  let todosPreenchidos = true;
+
+  camposObrigatorios.forEach(campo => {
+      if (!campo.value.trim()) {
+          todosPreenchidos = false;
+          return;
+      }
+  });
+
+  return todosPreenchidos;
+}
+
+function formatarData(inputData) {
+  var partesData = inputData.split('-');
+  var ano = partesData[0];
+  var mes = partesData[1];
+  var dia = partesData[2];
+
+  var dataFormatada = dia + '/' + mes + '/' + ano;
+  return dataFormatada;
+}
+
+</script>
+
+</html>
