@@ -32,7 +32,3 @@ pip install -r requirements.txt
 ## Dúvidas
 
 Se tiver alguma dúvida, estou à disposição para ajudar.
-
----
-
-Isso deve fornecer uma visão mais clara e organizada da sua aplicação para os usuários. Se precisar de mais alguma coisa, é só pedir!
