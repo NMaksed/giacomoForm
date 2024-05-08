@@ -1,7 +1,3 @@
-Claro, aqui está uma versão melhorada do seu arquivo README.md com algumas melhorias de formatação e inclusão de seções adicionais:
-
----
-
 # GiacomoForm
 
 **Aplicação para a Casa Giacomo**
