@@ -21,14 +21,6 @@ Para executar o GiacomoForm, siga estes passos:
 
 Dentro da pasta `import`, há um PDF de pedido de fábrica para testar o sistema. Preencha todos os campos e clique em "Enviar" para visualizar o formulário preenchido. Se necessário, é possível imprimir o formulário.
 
-## Requisitos
-
-Para rodar o GiacomoForm, é necessário ter o Python instalado. Você pode instalar as dependências necessárias executando o seguinte comando:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Dúvidas
 
 Se tiver alguma dúvida, estou à disposição para ajudar.
