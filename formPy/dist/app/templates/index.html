@@ -131,6 +131,14 @@
           <td><input id="cliente" name="cliente" type="text" required /></td>
         </tr>
         <tr>
+          <td>Cliente Final:</td>
+          <td><input id="clienteFinal" name="clienteFinal" type="text" />
+        </tr>
+        <tr>
+          <td>N° telefone Cliente Final:</td>
+          <td><input id="telCliente" name="telCliente" type="text" /></td>
+        </tr>
+          <tr>
           <td>Vendedor:</td>
           <td><input id="vendedor" name="vendedor" type="text" required /></td>
         </tr>
@@ -219,6 +227,17 @@
             </select>
           </td>
         </tr>
+        <tr>
+          <td>
+            Entregar Sobras?
+          </td>
+          <td>
+            <select id="entregaSobras" required>
+              <option value="Sim"> Sim
+              <option value="Não"> NÃO
+            </select>
+          </td>
+        </tr>
         <td colspan="2">
           <center> <b> FICHA DE ACEITE</b></center>
         </td>
@@ -234,9 +253,12 @@
           </td>
         </tr>
         <tr>
-          <td> Previsao para retira: </td>
+          <td> Previsao para retirada: </td>
           <td><input id="previsao" name="previsao" type="date" required /></td>
         </tr>
+        <tr>
+          <td> Previsao de Entrega: </td>
+          <td><input id="previsaoEntrega" name="previsaoEntrega" type="date" required /></td>
         <tr>
           <td>
             Endereço:
@@ -285,6 +307,9 @@
         <tr>
           <td style="tabela-celula">CLIENTE/OBRA: <b><span id="inputCliente"></span></b></td>
           <td style="tabela-celula">VENDEDOR/PEDIDO: <b><span id="inputVendedor"></span> - <span id="pedidoDisplay"></span></b></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="tabela-celular">Cliente Final/Telefone: <b><span id="clienteFinalDisplay"></span> - <span id="telClienteDisplay"></span></b></td>
         </tr>
         <!-- Terceira linha -->
         <tr>
@@ -341,7 +366,7 @@
         <!-- Décima quinta linha -->
         <tr>
           <td colspan="1">ENTREGAR? <b><span id="entregarDisplay"></span></b></td>
-          <td colspan="1">PREVISÃO PARA RETIRADA: <b><span id="previsaoDisplay2"></span></b></td>
+          <td colspan="1">PREVISÃO PARA ENTREGA: <b><span id="previsaoEntregaDisplay"></span></b></td>
         </tr>
         <!-- Décima sexta linha -->
         <tr>
@@ -354,11 +379,11 @@
         </tr>
         <!-- Décima oitava linha -->
         <tr>
-          <td colspan="2">Entregas em prédios só serão feitas com peças que caibam no elevador de serviço. Peças maiores serão deixadas no andar da descarga. Havendo necessidade de subir escadas será cobrado VALOR ADICIONAL de no mínimo R$ 100,00 ou R$30,00/por andar. (O que for maior) A não informação do uso de escadas no ato da venda, implicará no retorno da mercadoria para a Giacomo. <br> <br> <b>Assinatura:________________</b> </td>
+          <td colspan="2">Entregas em prédios só serão feitas com peças que caibam no elevador de serviço. Peças maiores serão deixadas no andar da descarga. Havendo necessidade de subir escadas será cobrado VALOR ADICIONAL de no mínimo R$ 150,00 ou R$30,00/por andar/peça. (O que for maior) A não informação do uso de escadas no ato da venda, implicará no retorno da mercadoria para a Promad. <br> <br> <b>Assinatura:________________</b> </td>
         </tr>
         <!-- Décima nona linha -->
         <tr>
-          <td colspan="2">1-Todas as sobras serão retiradas ou entregues com o plano de corte. As sobras que não forem entregues por solicitação do cliente ficarão disponíveis na Giacomo no prazo máximo de 3 dias. Após este prazo as peças serão descartadas. Não aceitamos reclamações posteriores. <br> 2- Projetos enviados pelo "Corte Cloud/Promob" NÃO podem ser alterados pela Giacomo. Os planos enviados são de total responsabilidade do cliente. Favor conferir antes de liberar para corte. <br> <br> <b> De acordo em/Data:____/____/_____ </b> <br> <br> <b>Nome:_______________ </b></td>
+          <td colspan="2"> ENTREGAR SOBRAS? <b> <span id="entregaSobrasDisplay"></span> </b> <br> <br> 1- Sobras não entregues ou retiradas, conforme opção acima, serão descartadas imediatamente após o termino da produção. Não serão aceitas reclamações posteriores <br> 2- Projetos enviados pelo "Corte Cloud/Promob" NÃO podem ser alterados pela Promad. Os planos enviados são de total responsabilidade do cliente. Favor conferir antes de liberar para corte. <br> <br> <b> De acordo em/Data:____/____/_____ </b> <br> <br> <b>Nome:_______________ </b></td>
         </tr>
         <!-- Vigésima linha -->
         <tr>
@@ -409,6 +434,7 @@
     const routerfita = document.getElementById('routerfita').value;
     const corteperfil = document.getElementById('corteperfil').value;
     const previsao = document.getElementById('previsao').value;
+    const previsaoEntrega = document.getElementById('previsaoEntrega').value;
     const pedido = document.getElementById('pedido').value;
     const materialCentral = document.getElementById('materialCentral');
     const selectedMaterial = materialCentral.value;
@@ -421,6 +447,10 @@
     const selectedPredio = predio.value;
     const escada = document.getElementById('escada');
     const selectedEscada = escada.value;
+    const entregaSobras = document.getElementById('entregaSobras')
+    const selectedEntregaSobras = entregaSobras.value;
+    const inputTelCliente = document.getElementById("telCliente").value;
+    const inputClienteFinal = document.getElementById("clienteFinal").value;
     
     document.getElementById('inputCliente').textContent = inputCliente;
     document.getElementById('inputVendedor').textContent = inputVendedor;
@@ -442,7 +472,6 @@
     document.getElementById('tipoCanalDisplay').textContent = tipocanal;
     document.getElementById('entregarDisplay').textContent = selectedEntregar;
     document.getElementById('previsaoDisplay').textContent = formatarData(previsao);
-    document.getElementById('previsaoDisplay2').textContent = formatarData(previsao);
     document.getElementById('enderecoDisplay').textContent = endereco;
     document.getElementById('predioDisplay').textContent = selectedPredio;
     document.getElementById('escadaDisplay').textContent = selectedEscada;
@@ -450,6 +479,10 @@
     document.getElementById('materialCentralDisplay').textContent = selectedMaterial;
     document.getElementById('usoSobraDisplay').textContent = selectedUsoSobra;
     document.getElementById('fitagemDisplay').textContent = fitagem;
+    document.getElementById('telClienteDisplay').textContent = inputTelCliente;
+    document.getElementById('clienteFinalDisplay').textContent = inputClienteFinal;
+    document.getElementById('previsaoEntregaDisplay').textContent = formatarData(previsaoEntrega);
+    document.getElementById('entregaSobrasDisplay').textContent = selectedEntregaSobras;
     
     
     if (!verificarCamposObrigatoriosPreenchidos()) {
