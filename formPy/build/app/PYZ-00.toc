@@ -1,4 +1,4 @@
-('C:\\Users\\55119\\Desktop\\GiacomoForm-master\\GiacomoForm-master\\formPy\\build\\app\\PYZ-00.pyz',
+('C:\\Users\\55119\\Desktop\\GiacomoForm-master\\formPy\\build\\app\\PYZ-00.pyz',
  [('Cython',
    'C:\\Users\\55119\\anaconda3\\lib\\site-packages\\Cython\\__init__.py',
    'PYMODULE'),
